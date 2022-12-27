@@ -2,11 +2,12 @@ package main
 
 import (
 	"fmt"
+	blck "stellar_blockchain/blockchain"
 	"strconv"
 )
 
 func main() {
-	bc := NewBlockChain()
+	bc := blck.NewBlockChain()
 	bc.AddBlock("Send 1 STLR to Gellert")
 	bc.AddBlock("Send 5 STLR to Gellert")
 
@@ -15,7 +16,7 @@ func main() {
 		fmt.Printf("Data: %s\n", block.Data)
 		fmt.Printf("Hash: %x\n", block.Hash)
 
-		pow := NewProofOfWork(block)
+		pow := blck.NewProofOfWork(block)
 		fmt.Printf("PoW: %s\n", strconv.FormatBool(pow.Validate()))
 		fmt.Println()
 	}
